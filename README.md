@@ -1,7 +1,3 @@
-Claro! Abaixo está um `README.md` completo e adequado para o repositório contendo o código fornecido:
-
----
-
 # 📈 Ranking de Fundos de Investimento (CVM) – Streamlit App
 
 Este projeto é uma aplicação interativa desenvolvida com **Streamlit** para **analisar e ranquear fundos de investimento brasileiros**, com base nos dados públicos fornecidos pela **CVM (Comissão de Valores Mobiliários)** e no **CDI** via Banco Central (SGS).
