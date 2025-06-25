@@ -82,6 +82,3 @@ Esta aplicação em **Streamlit** permite analisar e classificar os melhores **f
 
 Este projeto é open-source, sob licença [MIT](LICENSE).
 
----
-
-Se quiser, posso também gerar o `requirements.txt` correspondente. Deseja isso?
