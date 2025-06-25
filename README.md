@@ -1,84 +1,104 @@
-Claro! Abaixo está um exemplo de um arquivo `README.md` para o seu projeto Streamlit. Esse arquivo explica o propósito da aplicação, como utilizá-la, os requisitos e como executá-la localmente.
+Claro! Abaixo está um `README.md` completo e adequado para o repositório contendo o código fornecido:
 
 ---
 
-# 📊 Ranking de Fundos de Investimento - Streamlit App
+# 📈 Ranking de Fundos de Investimento (CVM) – Streamlit App
 
-Esta aplicação em **Streamlit** permite analisar e classificar os melhores **fundos de investimento** registrados na CVM com base em dados públicos, utilizando métricas como retorno, drawdown e índice de Sharpe ajustado pelo CDI.
+Este projeto é uma aplicação interativa desenvolvida com **Streamlit** para **analisar e ranquear fundos de investimento brasileiros**, com base nos dados públicos fornecidos pela **CVM (Comissão de Valores Mobiliários)** e no **CDI** via Banco Central (SGS).
 
-## 🔍 Funcionalidades
+## 🔎 Funcionalidades
 
-* Busca automática de **fundos em funcionamento normal**.
-* Filtro por **classe de fundos**: Multimercado, Ações, Renda Fixa e Cambial.
-* Filtragem por **mínimo de cotistas**.
-* Seleção de **período de análise**.
-* Análise de performance com:
+* Leitura automatizada dos **cadastros de fundos** e **informes diários da CVM**.
+* Análise de performance com base em:
 
   * Retorno acumulado
-  * Drawdown (com gráfico e tabela)
+  * Drawdown (tabela e gráfico)
   * Índice de Sharpe ajustado ao CDI
-* Visualização dos melhores fundos com gráficos e métricas.
+* Filtros por:
 
-## 🛠️ Tecnologias utilizadas
+  * Período de análise
+  * Quantidade mínima de cotistas
+  * Classe do fundo (Multimercado, Ações, Renda Fixa, Cambial)
+  * Quantidade de fundos exibidos
+
+## 🧪 Tecnologias Utilizadas
 
 * [Streamlit](https://streamlit.io/)
-* [PyFolio](https://github.com/quantopian/pyfolio)
-* [Empyrical](https://github.com/quantopian/empyrical)
 * [Pandas](https://pandas.pydata.org/)
 * [Matplotlib](https://matplotlib.org/)
-* Módulo `sgs` (interface para séries temporais do Banco Central do Brasil)
+* [PyFolio](https://github.com/quantopian/pyfolio)
+* [Empyrical](https://github.com/quantopian/empyrical)
+* Módulo `sgs` para séries temporais do Banco Central do Brasil
+
+## 📁 Estrutura esperada de arquivos
+
+Certifique-se de ter os seguintes arquivos na raiz do projeto:
+
+* `cad_fi.csv`: Cadastro de fundos da CVM
+* `inf_diario_fi_202501.zip`: Informes diários do mês desejado (atualmente fixado em Janeiro/2025)
+
+> ⚠️ Caso deseje analisar outros períodos, será necessário modificar o nome do arquivo dentro da função `busca_informes_diarios_cvm_por_periodo()`.
 
 ## ▶️ Como executar
 
-1. **Clone o repositório**:
+### 1. Clone o repositório
 
-   ```bash
-   git clone https://github.com/seuusuario/nome-do-repo.git
-   cd nome-do-repo
-   ```
+```bash
+git clone https://github.com/seu-usuario/nome-do-repo.git
+cd nome-do-repo
+```
 
-2. **Crie um ambiente virtual (opcional, mas recomendado)**:
+### 2. (Opcional) Crie um ambiente virtual
 
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # no Windows: venv\Scripts\activate
-   ```
+```bash
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+```
 
-3. **Instale as dependências**:
+### 3. Instale as dependências
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-4. **Execute o app Streamlit**:
+Se você ainda não possui o módulo `sgs`, instale manualmente:
 
-   ```bash
-   streamlit run nome_do_arquivo.py
-   ```
+```bash
+pip install sgs
+```
 
-## 📁 Estrutura esperada dos dados
+### 4. Execute o aplicativo
 
-* **cad\_fi.csv**: Cadastro dos fundos, disponível no site da CVM.
-* **inf\_diario\_fi\_202501.zip**: Informes diários da CVM para o mês desejado.
+```bash
+streamlit run app.py  # substitua pelo nome do arquivo, se necessário
+```
 
-  * ⚠️ Atualmente o código está fixo para o arquivo de **Janeiro/2025**. Para outros períodos, é necessário adaptar a URL.
+## 🧮 Exemplo de uso
 
-## 📌 Observações
+1. Selecione a **data inicial** e **final** da análise no menu lateral.
+2. Escolha a **quantidade de fundos** que deseja exibir.
+3. Defina um número mínimo de cotistas.
+4. Filtre por **classe de fundo**, se desejar.
+5. Clique em **"Buscar e Analisar"**.
+6. Veja os resultados com gráficos de drawdown e métricas de retorno e risco.
 
-* Os dados de CDI são obtidos diretamente via API do **Banco Central (SGS)**.
-* A função `melhores_fundos()` utiliza o retorno da cota para classificar os fundos.
-* Os gráficos de drawdown são gerados via `pyfolio`.
+## ✅ Saída esperada
 
-## ✅ Exemplo de uso
+* Tabela com os melhores fundos, exibindo:
 
-1. Selecione a **data de início e fim**.
-2. Escolha a **quantidade de fundos** e o número mínimo de cotistas.
-3. Opcionalmente, filtre por **classe de fundos**.
-4. Clique em **"Buscar e Analisar"** para visualizar os fundos com melhor performance.
+  * Nome
+  * Classe
+  * Retorno acumulado
+  * Patrimônio líquido (PL)
+  * Índice de Sharpe (ajustado pelo CDI)
+* Tabelas e gráficos de **drawdown**
 
----
+## ⚠️ Observações
 
-## 📄 Licença
+* O código atualmente processa apenas o arquivo `inf_diario_fi_202501.zip`.
+* A aplicação ignora fundos **fora de funcionamento normal**.
+* Requer conexão com a internet para acessar o CDI via Banco Central (SGS).
 
-Este projeto é open-source, sob licença [MIT](LICENSE).
+## 📜 Licença
 
+Este projeto está licenciado sob a Licença MIT.
