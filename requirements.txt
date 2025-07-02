@@ -1,5 +1,5 @@
 pyfolio
-empyrical== 0.5.5
+empyrical== 0.4.3
 matplotlib
 pandas
 python-bcb
