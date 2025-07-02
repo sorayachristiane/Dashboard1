@@ -2,5 +2,5 @@ pyfolio
 empyrical
 matplotlib
 pandas
-sgs
+python-bcb
 datetime
